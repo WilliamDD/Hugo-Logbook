@@ -1,0 +1,33 @@
+<article class="columns is-multiline is-justify-content-center mb-6">
+    <div class="column is-12">
+        <div class="post-slider">
+            {{ range .Params.featureImage }}
+            <img loading="lazy" src="{{ . }}" class="" alt="post-thumb">
+
+        {{ end }}
+        </div>
+    </div>
+    <div class="column is-12">
+        <h3><a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        <ul class="list-inline post-meta mb-4">
+            <li class="list-inline-item"><i class="ti-user mr-2"></i>
+                {{ .Params.Author }}
+            </li>
+            <li class="list-inline-item">Date : {{ .PublishDate.Format "January 2, 2006" }}</li>
+            <li class="list-inline-item">Categories : 
+                {{ range .Params.categories }}
+                    <a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> , 
+                {{ end }}
+            </li>
+            <li class="list-inline-item">Tags : 
+                {{ range .Params.tags }}
+                    <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> , 
+                {{ end }}
+            </li>
+        </ul>
+        <p>
+            {{ .Summary }}
+        </p>
+        <a href="{{ .Permalink }}" class="btn btn-outline-primary">Continue Reading</a>
+    </div>
+</article>

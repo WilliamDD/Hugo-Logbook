@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+<html lang="en-us">
+{{- partial "head.html" . -}}
+<body>
+  {{- partial "header.html" . -}}
+  {{- block "main" . }}{{- end }}
+  {{- partial "footer.html" . -}}
+
+  <!-- JS Plugins -->
+   <script src="/plugins/jQuery/jquery.min.js"></script>
+   <script src="/plugins/slick/slick.min.js"></script>
+
+   <!-- Main Script -->
+   <script src="/js/script.js"></script>
+</body>
+</html>

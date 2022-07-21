@@ -1,0 +1,59 @@
+<!-- navigation -->
+<header class="is-sticky-top bg-white border-bottom border-default">
+    <div class="container">
+
+        <nav class="navigation navbar is-white">
+            <a class="navbar-brand is-inline-flex ml-0 is-align-items-center" href="index.html">
+                <img src="/images/logo.png" alt="{{ .Site.Title }}">
+            </a>
+            <button role="button" class="navbar-burger burger" data-hidden="true" data-target="navigation">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+
+            <ul class="navbar-end navbar-menu" id="navigation">
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                {{ if .HasChildren }}
+                <li class="navbar-item has-dropdown is-hoverable has-active">
+                    <a class="navbar-link">{{ .Name }} <small class="ti-angle-down ml-1"></small></a>
+                    <div class="navbar-dropdown">
+                        {{ range .Children }}
+                        <a class="navbar-item" href="{{ .URL }}">{{ .Name }}</a>
+                        {{ end }}
+                    </div>
+                </li>
+                {{ else }}
+                <li class="navbar-item">
+                    <a class="navbar-link is-arrowless" href="{{ .URL }}">{{ .Name }}</a>
+                </li>
+                {{ end }}
+                {{ end }}
+
+                <li class="navbar-item">
+                    <select class="m-2 is-borderless" id="select-language">
+                        <option id="en" value="about/" selected>En</option>
+                        <option id="fr" value="fr/about/">Fr</option>
+                    </select>
+                </li>
+
+                <li class="navbar-item">
+                    <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+                </li>
+
+                <!-- search -->
+                <div class="search">
+                    <div class="search-wrapper">
+                        <form action="javascript:void(0)" class="h-100">
+                            <input class="search-box pl-4" id="search-query" name="s" type="search"
+                                placeholder="Type &amp; Hit Enter...">
+                        </form>
+                        <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- /navigation -->
