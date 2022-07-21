@@ -6,7 +6,7 @@
                 {{ $paginator := .Paginate (cond .IsHome (where site.RegularPages "Type" "in" site.Params.mainSections)
                 (.Data.Pages) ) }}
                 {{ range $paginator.Pages }}
-                {{- partial "article.html" . -}}
+                {{- partial "article-summary.html" . -}}
                 {{ end }}
 
                 <!-- Pagination -->
@@ -22,46 +22,7 @@
                     {{ end }}
             </div>
             <aside class="column is-4-desktop">
-                <!-- Search -->
-                <div class="widget">
-                    <h5 class="widget-title"><span>Search</span></h5>
-                    <form action="javascript:void(0)" class="widget-search">
-                        <input id="search-query2" name="s" type="search" placeholder="Type &amp; Hit Enter...">
-                        <button type="submit"><i class="ti-search"></i>
-                        </button>
-                    </form>
-                </div>
-
-                {{ range $key, $value := .Site.Taxonomies }}
-                <div class="widget">
-                    <h5 class="widget-title"><span>{{ $key }}</span></h5>
-                    <ul class="list-unstyled widget-list">
-                        {{ range first 10 $value.ByCount }}
-                        <li><a href='{{ $.Site.BaseURL}}{{ $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class="is-flex">{{ .Name }}
-                                <small class="ml-auto">({{ .Count }})</small></a>
-                        </li>
-                        {{ end }}
-                    </ul>
-                </div>
-                {{ end }}
-                <!-- latest post -->
-                <div class="widget">
-                    <h5 class="widget-title"><span>Featured Articles</span></h5>
-                    <!-- post-item -->
-                    {{ range first 3 .Site.Taxonomies.tags.featured }}
-                    <ul class="list-unstyled widget-list">
-                        <li class="media widget-post is-align-items-center">
-                            <a href="{{ .Permalink }}">
-                                <img loading="lazy" src="{{ index (.Params.featureImage) 0 }}">
-                            </a>
-                            <div class="ml-4">
-                                <h5 class="h6 mb-0"><a href="{{ .Permalink }}">{{ .Title }}</a></h5>
-                                <small>March 15, 2020</small>
-                            </div>
-                        </li>
-                    </ul>
-                    {{ end }}
-                </div>
+                {{- partial "sidebar.html" . -}}
             </aside>
         </div>
     </div>

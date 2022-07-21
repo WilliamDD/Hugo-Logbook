@@ -1,0 +1,17 @@
+<ul class="list-inline post-meta mb-4">
+    <li class="list-inline-item"><i class="ti-user mr-2" title="Author"></i>
+        {{ .Params.Author }}
+    </li>
+    <li class="list-inline-item"><i class="ti-calendar mr-2" title="Date"></i>
+        {{ .PublishDate.Format "January 2, 2006" }}</li>
+    <li class="list-inline-item"><i class="ti-tag mr-2" title="Categories"></i>
+        {{ range .Params.categories }}
+            <a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> , 
+        {{ end }}
+    </li>
+    <li class="list-inline-item"><i class="ti-tag mr-2" title="Tags"></i>
+        {{ range .Params.tags }}
+            <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> , 
+        {{ end }}
+    </li>
+</ul>
