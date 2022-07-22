@@ -2,7 +2,7 @@
 <section class="section">
     <div class="container">
         <div class="columns is-desktop is-multiline">
-            <div class="column is-8-desktop">
+            <main class="column is-8-desktop">
                 {{ $paginator := .Paginate (cond .IsHome (where site.RegularPages "Type" "in" site.Params.mainSections)
                 (.Data.Pages) ) }}
                 {{ range $paginator.Pages }}
@@ -20,7 +20,7 @@
                     {{ else }}
                     <a href="#" class="disabled btn btn-outline-primary">Next Page</a>
                     {{ end }}
-            </div>
+            </main>
             <aside class="column is-4-desktop">
                 {{- partial "sidebar.html" . -}}
             </aside>
