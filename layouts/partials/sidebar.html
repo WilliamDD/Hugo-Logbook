@@ -10,7 +10,7 @@
 </div>
 -->
 {{ range $key, $value := .Site.Taxonomies }}
-<div class="widget">
+<nav class="widget">
     <h5 class="widget-title"><span>{{ $key }}</span></h5>
     <ul class="list-unstyled widget-list">
         {{ range first 10 $value.ByCount }}
@@ -19,10 +19,10 @@
         </li>
         {{ end }}
     </ul>
-</div>
+</nav>
 {{ end }}
 <!-- latest post -->
-<div class="widget">
+<nav class="widget">
     <h5 class="widget-title"><span>Featured Articles</span></h5>
     <!-- post-item -->
     {{ range first 3 .Site.Taxonomies.tags.featured }}
@@ -38,4 +38,4 @@
         </li>
     </ul>
     {{ end }}
-</div>
+</nav>

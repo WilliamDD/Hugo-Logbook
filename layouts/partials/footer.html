@@ -11,19 +11,19 @@
             {{ $currentPage := . }}
             {{ range .Site.Menus.footer }}
             {{ if .HasChildren }}
-            <div class="column is-2-widescreen is-3-desktop is-6">
+            <nav class="column is-2-widescreen is-3-desktop is-6">
                 <h6 class="mb-4">{{ .Name }}</h6>
                 <ul class="list-unstyled footer-list">
                     {{ range .Children }}
                     <li><a href="{{ .URL }}">{{ .Name }}</a></li>
                     {{ end }}
                 </ul>
-            </div>
+            </nav>
             {{ end }}
             {{ end }}
 
 
-            <div class="column is-2-widescreen is-3-desktop is-6">
+            <nav class="column is-2-widescreen is-3-desktop is-6">
                 <h6 class="mb-4">Social Links</h6>
                 <ul class="list-unstyled footer-list">
                     {{ with .Site.Social.Facebook -}}
@@ -40,7 +40,7 @@
                     {{ end -}}
                     <li><a href='{{ " index.xml" | absURL }}'>RSS</a></li>
                 </ul>
-            </div>
+            </nav>
 
 
         </div>
