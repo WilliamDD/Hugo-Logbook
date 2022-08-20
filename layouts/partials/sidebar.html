@@ -29,11 +29,11 @@
     <ul class="list-unstyled widget-list">
         <li class="media widget-post is-align-items-center">
             <a href="{{ .Permalink }}">
-                <img loading="lazy" src="{{ index (.Params.featureImage) 0 }}">
+                <img loading="lazy" src="{{ index (.Params.featureImage) 0 }}" alt="Featured image of {{ .Title }}">
             </a>
             <div class="ml-4">
                 <h5 class="h6 mb-0"><a href="{{ .Permalink }}">{{ .Title }}</a></h5>
-                <small>March 15, 2020</small>
+                <small>{{ .PublishDate.Format "January 2, 2006" }}</small>
             </div>
         </li>
     </ul>

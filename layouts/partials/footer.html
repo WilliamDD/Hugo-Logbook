@@ -2,11 +2,10 @@
     <div class="container">
         <div class="columns is-multiline is-justify-content-space-between">
             <div class="column is-3-desktop">
-                <a class="mb-5 is-block" href="/index.html">
-                    <img class="" width="150px" src="/images/logo.png" alt="{{ .Site.Title }}">
+                <a class="mb-5 is-block h4 has-text-black" href="/index.html">
+                    {{ .Site.Title }}
                 </a>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                <p>{{ .Params.Description }}</p>
             </div>
             {{ $currentPage := . }}
             {{ range .Site.Menus.footer }}

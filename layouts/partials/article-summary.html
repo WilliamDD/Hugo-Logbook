@@ -1,13 +1,14 @@
 <article class="columns is-multiline is-justify-content-center mb-6">
     <div class="column is-12">
         <div class="post-slider">
-            {{ range .Params.featureImage }}
-                <img loading="lazy" src="{{ . }}" class="" alt="post-thumb">
+            {{ $pageScope := . }}
+            {{ range $index, $image := .Params.featureImage }}
+                <img loading="lazy" src="{{ $image }}" class="" alt="Featured image {{ $index }} of {{ $pageScope.Title }}">
             {{ end }}
         </div>
     </div>
     <div class="column is-12">
-        <h1><a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a></h1>
+        <h1><a class="post-title h3" href="{{ .Permalink }}">{{ .Title }}</a></h1>
         {{- partial "article-meta.html" . -}}
         <p>
             {{ .Summary }}

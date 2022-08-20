@@ -1009,11 +1009,16 @@ a:hover {
   position: relative;
   margin-bottom: 15px;
 }
+.widget-title span::first-letter 
+{
+  text-transform: uppercase; 
+}
 .widget-title span {
   background: #fff;
   position: relative;
   padding-right: 5px;
   z-index: 1;
+  display: block;
 }
 .widget-title::before {
   position: absolute;
