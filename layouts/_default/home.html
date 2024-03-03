@@ -1,0 +1,49 @@
+{{ define "main" }}
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9  mb-5 mb-lg-0">
+                {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+                {{ range $paginator.Pages }}
+                {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+                {{ $dateHuman := .Date | time.Format ":date_long" }}
+                <article class="row mb-5">
+                    <div class="col-12">
+                        <div class="post-slider">
+                            <img loading="lazy" src="{{ .RelPermalink }}{{ .Params.Image }}" class="img-fluid"
+                                alt="post-thumb" style="height:330px; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="col-12 mx-auto">
+                        <h3><a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                        <ul class="list-inline post-meta mb-4">
+                            <li class="list-inline-item"><i class="ti-user mr-2"></i>John Doe</li>
+                            <li class="list-inline-item">Date : <time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></li>
+                            <li class="list-inline-item">Categories :
+                                {{ range .Params.categories }}
+                                <a href="{{ " /categories/" | relLangURL }}{{ . | urlize }}" class="ml-1">
+                                    {{ . }}
+                                </a>
+                                {{ end }}
+                            </li>
+                            <li class="list-inline-item">Tags : 
+                                {{ range .Params.tags }}
+                                <a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}" class="ml-1">
+                                    {{ . }}
+                                </a>
+                                {{ end }}
+                            </li>
+                        </ul>
+                        <p>{{ .Summary }}</p> <a href="{{ .RelPermalink }}" class="btn btn-outline-primary">Continue
+                            Reading</a>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+            <aside class="col-lg-3">
+                {{ partial "sidebar.html" . }}
+            </aside>
+        </div>
+    </div>
+</section>
+{{ end }}
