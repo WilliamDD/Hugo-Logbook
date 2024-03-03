@@ -21,14 +21,14 @@
                             <li class="list-inline-item">Date : <time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></li>
                             <li class="list-inline-item">Categories :
                                 {{ range .Params.categories }}
-                                <a href="{{ " /categories/" | relLangURL }}{{ . | urlize }}" class="ml-1">
+                                <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="ml-1">
                                     {{ . }}
                                 </a>
                                 {{ end }}
                             </li>
                             <li class="list-inline-item">Tags : 
                                 {{ range .Params.tags }}
-                                <a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}" class="ml-1">
+                                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="ml-1">
                                     {{ . }}
                                 </a>
                                 {{ end }}

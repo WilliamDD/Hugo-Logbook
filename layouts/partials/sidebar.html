@@ -30,45 +30,21 @@
 </div>
 <!-- latest post -->
 <div class="widget">
-    <h5 class="widget-title"><span>Latest Article</span></h5>
+    <h5 class="widget-title"><span>Featured Articles</span></h5>
     <!-- post-item -->
-    <ul class="list-unstyled widget-list">
-        <li class="media widget-post align-items-center">
-            <a href="post-elements.html">
-                <img loading="lazy" class="mr-3" src="/images/post/post-6.jpg">
-            </a>
-            <div class="media-body">
-                <h5 class="h6 mb-0"><a href="post-elements.html">Elements That You Can Use To Create A
-                        New Post On
-                        This Template.</a></h5>
-                <small>March 15, 2020</small>
-            </div>
-        </li>
-    </ul>
-    <ul class="list-unstyled widget-list">
-        <li class="media widget-post align-items-center">
-            <a href="post-details-1.html">
-                <img loading="lazy" class="mr-3" src="/images/post/post-1.jpg">
-            </a>
-            <div class="media-body">
-                <h5 class="h6 mb-0"><a href="post-details-1.html">Cheerful Loving Couple Bakers Drinking
-                        Coffee</a>
-                </h5>
-                <small>March 14, 2020</small>
-            </div>
-        </li>
-    </ul>
-    <ul class="list-unstyled widget-list">
-        <li class="media widget-post align-items-center">
-            <a href="post-details-2.html">
-                <img loading="lazy" class="mr-3" src="/images/post/post-2.jpg">
-            </a>
-            <div class="media-body">
-                <h5 class="h6 mb-0"><a href="post-details-2.html">Cheerful Loving Couple Bakers Drinking
-                        Coffee</a>
-                </h5>
-                <small>March 14, 2020</small>
-            </div>
-        </li>
-    </ul>
+    {{ range first 3 .Site.Taxonomies.tags.featured }}
+        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+        {{ $dateHuman := .Date | time.Format ":date_long" }}
+        <ul class="list-unstyled widget-list">
+            <li class="media widget-post align-items-center">
+                <a href="{{ .RelPermalink }}">
+                    <img loading="lazy" class="mr-3" src="{{ .RelPermalink }}{{ .Params.Image }}">
+                </a>
+                <div class="media-body">
+                    <h5 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+                    <small><time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></small>
+                </div>
+            </li>
+        </ul>
+    {{ end }}
 </div>
