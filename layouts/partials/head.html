@@ -4,21 +4,50 @@
 
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="This is meta description">
-    <meta name="author" content="Themefisher">
+
+    {{ if .IsHome }}
+    <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta name="author" content="{{ .Site.Params.Author }}">
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:url" content="{{ .Page.Permalink }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta name="twitter:url" content="{{ .Page.Permalink }}">
+    <meta name="twitter:description" content="{{ .Site.Params.Description }}">
+    
+    {{ else }}
+    <meta name="description" content="{{ .Page.Summary }}">
+    <meta name="author" content="{{ .Site.Params.Author }}">
+    <meta property="og:title" content="{{ .Page.Title }}.">
+    <meta property="og:url" content="{{ .Page.Permalink }}">
+    <meta property="og:description" content="{{ .Page.Summary }}">
+    <meta property="og:type" content="article" />
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content=".Page.Title ">
+    <meta name="twitter:url" content="{{ .Page.Permalink }}">
+    <meta name="twitter:description" content="{{ .Page.Summary }}">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    {{ end }}
 
     <!-- plugins -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2"
-        style="font-display: optional;">
-    <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Montserrat:600%7cOpen&#43;Sans&amp;display=swap" media="screen">
+    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2" style="font-display: optional;">
+    <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600%7cOpen&#43;Sans&amp;display=swap" media="screen" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="/plugins/slick/slick.css">
+    <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/plugins/slick/slick.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!--Favicon-->
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
