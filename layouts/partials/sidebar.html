@@ -1,15 +1,15 @@
 <!-- Search -->
 <div class="widget">
-    <h5 class="widget-title"><span>Search</span></h5>
+    <h3 class="h5 widget-title"><span>Search</span></h3>
     <form action="/logbook-hugo/search" class="widget-search">
-        <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
-        <button type="submit"><i class="ti-search"></i>
+        <input id="search-query-sidebar" name="s" type="search" placeholder="Type &amp; Hit Enter...">
+        <button type="submit" aria-label="Search"><i class="ti-search"></i>
         </button>
     </form>
 </div>
 <!-- categories -->
 <div class="widget">
-    <h5 class="widget-title"><span>Categories</span></h5>
+    <h3 class="h5 widget-title"><span>Categories</span></h3>
     <ul class="list-unstyled widget-list">
         {{ range $key, $value := .Site.Taxonomies.categories }}
             <li>
@@ -20,7 +20,7 @@
 </div>
 <!-- tags -->
 <div class="widget">
-    <h5 class="widget-title"><span>Tags</span></h5>
+    <h3 class="h5 widget-title"><span>Tags</span></h3>
     <ul class="list-inline widget-list-inline">
         {{ range $key, $value := .Site.Taxonomies.tags }}
         <li class="list-inline-item"><a href="{{ $.Site.BaseURL}}/tags/{{ $key }}/">{{ $key }}</a>
@@ -30,7 +30,7 @@
 </div>
 <!-- latest post -->
 <div class="widget">
-    <h5 class="widget-title"><span>Featured Articles</span></h5>
+    <h3 class="h5 widget-title"><span>Featured Articles</span></h3>
     <!-- post-item -->
     {{ range first 3 .Site.Taxonomies.tags.featured }}
         {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
@@ -38,10 +38,10 @@
         <ul class="list-unstyled widget-list">
             <li class="media widget-post align-items-center">
                 <a href="{{ .RelPermalink }}">
-                    <img loading="lazy" class="mr-3" src="{{ .RelPermalink }}{{ .Params.Image }}">
+                    <img loading="lazy" class="mr-3" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="Image of {{ .Title }}">
                 </a>
                 <div class="media-body">
-                    <h5 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+                    <h4 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
                     <small><time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></small>
                 </div>
             </li>

@@ -16,7 +16,7 @@ Renders a menu for the given menu ID.
     {{ if .HasChildren }}
     {{ else }}
     <li>
-      <a href="{{ .URL }}">{{ .Name }}</a>
+      <a href="{{ .URL }}"  class="text-dark">{{ .Name }}</a>
     </li>
     {{ end }}
   {{ end }}

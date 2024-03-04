@@ -5,39 +5,39 @@
                 <a class="mb-4 d-block" href="/">
                     <h1 class="navbar-brand mb-0 h4">{{ .Site.Title }}</h1>
                 </a>
-                <p>{{ .Site.Params.Description}}</p>
+                <p class="text-dark">{{ .Site.Params.Description}}</p>
             </div>
             <div class="col-md-3 mb-4">
                 
             </div>
             <div class="col-lg-2 col-md-3 col-6 mb-4">
-                <h6 class="mb-4">Quick Links</h6>
+                <h2 class="h6 mb-4">Quick Links</h2>
                 {{ partial "menu-footer.html" (dict "menuID" "footer1" "page" .) }}
             </div>
 
             <div class="col-lg-2 col-md-3 col-6 mb-4">
-                <h6 class="mb-4">Social Links</h6>
+                <h2 class="h6 mb-4">Social Links</h2>
                 <ul class="list-unstyled footer-list">
                     {{ with .Site.Social.twitter -}}
-                    <li><a href="https://twitter.com/{{ . }}">Twitter</a></li>
+                    <li><a href="https://twitter.com/{{ . }}" class="text-dark">Twitter</a></li>
                     {{ end -}}
                     {{ with .Site.Social.facebook }}
-                    <li><a href="https://www.facebook.com/{{ . }}">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/{{ . }}" class="text-dark">Facebook</a></li>
                     {{ end }}
                     {{ with .Site.Social.instagram -}}
-                    <li><a href="https://instagram.com/{{ . }}">Instagram</a></li>
+                    <li><a href="https://instagram.com/{{ . }}" class="text-dark">Instagram</a></li>
                     {{ end -}}
                     {{ with .Site.Social.linkedin -}}
-                    <li><a href="https://www.linkedin.com/in/{{ . }}/">LinkedIn</a></li>
+                    <li><a href="https://www.linkedin.com/in/{{ . }}/" class="text-dark">LinkedIn</a></li>
                     {{ end -}}
-                    <li><a href="{{ "index.xml" | absURL }}">RSS</a></li>
+                    <li><a href="{{ "index.xml" | absURL }}" class="text-dark">RSS</a></li>
                 </ul>
             </div>
 
             
         </div>
         <div class="scroll-top">
-            <a href="javascript:void(0);" id="scrollTop"><i class="ti-angle-up"></i></a>
+            <a href="#" id="scrollTop" aria-label="Scroll to top"><i class="ti-angle-up"></i></a>
         </div>
         <div class="text-center">
             <p class="content">{{ .Site.Copyright }}</p>
