@@ -3,7 +3,7 @@
 <section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 mb-5 mb-lg-0 pr-4">
+            <div class="col-lg-9 mb-5 mb-lg-0 pr-lg-4">
                 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
                 {{ range $paginator.Pages }}
                 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
@@ -37,7 +37,7 @@
                             </li>
                         </ul>
                         {{/*  <p>{{ .Summary }}</p>   */}}
-                        {{ .Content }}
+                        {{ .Content | replaceRE "<table>" "<div class='table-responsive'><table class='table'>" | replaceRE "</table>" "</table></div>" | safeHTML }}
                     </div>
                 </article>
                 {{ $isFirstArticle = "lazy" }}
