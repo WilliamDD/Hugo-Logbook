@@ -1,0 +1,19 @@
+h1,h2,h3,h4,h5,h6{
+    font-size: 1.5rem;
+}
+
+.highlight pre{
+    padding: 15px 5px;
+}
+
+.gitlab-embed-snippets,
+.gist,
+.s_video_simple,
+.video-wrapper {
+    margin:0 0 20px 0 !important;
+}
+
+.rounded-lg, .post-slider {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}

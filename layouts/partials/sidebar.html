@@ -12,9 +12,10 @@
     <h3 class="h5 widget-title"><span>Categories</span></h3>
     <ul class="list-unstyled widget-list">
         {{ range $key, $value := .Site.Taxonomies.categories }}
-            <li>
-                <a href="{{ $.Site.BaseURL}}/categories/{{ $key }}/" class="d-flex">{{ $key | humanize }}<small class="ml-auto">({{ $value.Count  }})</small></a>
-            </li>
+        <li>
+            <a href="{{ $.Site.BaseURL}}/categories/{{ $key }}/" class="d-flex">{{ $key | humanize }}<small
+                    class="ml-auto">({{ $value.Count }})</small></a>
+        </li>
         {{ end }}
     </ul>
 </div>
@@ -32,19 +33,20 @@
 <div class="widget">
     <h3 class="h5 widget-title"><span>Featured Articles</span></h3>
     <!-- post-item -->
-    {{ range first 3 .Site.Taxonomies.tags.featured }}
+    <ul class="list-unstyled widget-list">
+        {{ range first 3 .Site.Taxonomies.tags.featured }}
         {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
         {{ $dateHuman := .Date | time.Format ":date_long" }}
-        <ul class="list-unstyled widget-list">
-            <li class="media widget-post align-items-center">
-                <a href="{{ .RelPermalink }}">
-                    <img loading="lazy" class="mr-3" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="Image of {{ .Title }}">
-                </a>
-                <div class="media-body">
-                    <h4 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
-                    <small><time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></small>
-                </div>
-            </li>
-        </ul>
-    {{ end }}
+        <li class="media widget-post align-items-center">
+            <a href="{{ .RelPermalink }}">
+                <img loading="lazy" class="mr-3" src="{{ .RelPermalink }}{{ .Params.Image }}"
+                    alt="Image of {{ .Title }}">
+            </a>
+            <div class="media-body">
+                <h4 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                <small><time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></small>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
 </div>
