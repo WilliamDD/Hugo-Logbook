@@ -22,6 +22,22 @@ article a {
     border-bottom: 1px dotted #ddd;
 }
 
+.post-title {
+    border-bottom: 0 !important;
+}
+
 code{
     color: #A91459;
+}
+
+.article-content a {
+    color: #ce8460 !important;
+}
+
+.article-content a:after {
+    color: #ce8460;
+    content: "\e62d";
+    font-family:themify;
+    margin-left: 5px;
+    font-size: 10px;
 }

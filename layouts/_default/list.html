@@ -10,14 +10,16 @@
                 {{ $dateHuman := .Date | time.Format ":date_long" }}
                 
                 <article class="card row mb-5" style="border-radius: 10px;">
+                    {{ if .Params.Image }}
                     <div class="col-12 p-0">
-                        <div class="post-slider">
+                        <div class="post-slider m-0">
                             <img loading="{{ $isFirstArticle }}" src="{{ .RelPermalink }}{{ .Params.Image }}" class="img-fluid w-100"
                                 alt="Image of {{ .Title }}" style="height:330px; object-fit: cover;">
                         </div>
                     </div>
+                    {{ end }}
                     <div class="col-12 mx-auto">
-                        <h2 class="h3"><a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                        <h2 class="h3 mt-3"><a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
                         <ul class="list-inline post-meta mb-4">
                             <li class="list-inline-item"><i class="ti-user mr-2"></i>{{ .Site.Params.Author.Name }}</li>
                             <li class="list-inline-item">Date : <time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></li>
@@ -37,7 +39,9 @@
                             </li>
                         </ul>
                         {{/*  <p>{{ .Summary }}</p>   */}}
-                        {{ .Content | replaceRE "<table>" "<div class='table-responsive'><table class='table'>" | replaceRE "</table>" "</table></div>" | safeHTML }}
+                        <div class="article-content">
+                            {{ .Content | replaceRE "<table>" "<div class='table-responsive'><table class='table'>" | replaceRE "</table>" "</table></div>" | safeHTML }}
+                        </div>
                     </div>
                 </article>
                 {{ $isFirstArticle = "lazy" }}
