@@ -1,0 +1,27 @@
+{{ define "main" }}
+{{ $isFirstArticle := "eager" }}
+<section class="section">
+    <div class="container">
+        <div class="columns is-desktop is-multiline">
+            <div class="column is-12">
+				<div class="title-bordered mb-5 is-flex is-align-items-center">
+					<h1 class="h4">Showing items from <span class="text-primary">{{ .Title }}</span></h1>
+				</div>
+                <div class="content">
+                    {{ .Content | safeHTML }}
+                </div>
+			</div>
+            <div class="column is-12">
+                <div class="fixed-grid">
+                    <div class="grid">
+                        {{ range .Pages }}
+                        {{ partial "article-term.html" (dict "context" . "isFirstArticle" $isFirstArticle) }}
+                        {{ $isFirstArticle = "lazy" }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

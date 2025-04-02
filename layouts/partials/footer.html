@@ -1,46 +1,51 @@
 <footer class="section-sm pb-0 border-top border-default">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-md-3 mb-4">
-                <a class="mb-4 d-block" href="/">
-                    <h1 class="navbar-brand mb-0 h4">{{ .Site.Title }}</h1>
-                </a>
-                <p class="text-dark">{{ .Site.Params.Description}}</p>
-            </div>
-            <div class="col-md-3 mb-4">
-                
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 mb-4">
-                <h2 class="h6 mb-4">Quick Links</h2>
-                {{ partial "menu-footer.html" (dict "menuID" "footer1" "page" .) }}
-            </div>
+       <div class="columns is-multiline is-justify-content-space-between">
+          <div class="column is-3-desktop">
+             <a class="mb-5 is-block" href="/">
+                <img class="" width="150px" src="/images/logo.png" alt="LogBook">
+             </a>
+             <p>{{ .Site.Params.Description }}</p>
+          </div>
 
-            <div class="col-lg-2 col-md-3 col-6 mb-4">
-                <h2 class="h6 mb-4">Social Links</h2>
-                <ul class="list-unstyled footer-list">
-                    {{ with .Site.Social.twitter -}}
-                    <li><a href="https://twitter.com/{{ . }}" class="text-dark">Twitter</a></li>
-                    {{ end -}}
-                    {{ with .Site.Social.facebook }}
-                    <li><a href="https://www.facebook.com/{{ . }}" class="text-dark">Facebook</a></li>
-                    {{ end }}
-                    {{ with .Site.Social.instagram -}}
-                    <li><a href="https://instagram.com/{{ . }}" class="text-dark">Instagram</a></li>
-                    {{ end -}}
-                    {{ with .Site.Social.linkedin -}}
-                    <li><a href="https://www.linkedin.com/in/{{ . }}/" class="text-dark">LinkedIn</a></li>
-                    {{ end -}}
-                    <li><a href="{{ "index.xml" | absURL }}" class="text-dark">RSS</a></li>
-                </ul>
-            </div>
+          <div class="column is-2-widescreen is-3-desktop is-6">
+             <h6 class="mb-4">{{ .Site.Params.Footer.Header1 }}</h6>
+             <ul class="list-unstyled footer-list">
+               {{ partial "menu.html" (dict "menuID" "footer1" "page" .) }}
+             </ul>
+          </div>
 
-            
-        </div>
-        <div class="scroll-top">
-            <a href="#" id="scrollTop" aria-label="Scroll to top"><i class="ti-angle-up"></i></a>
-        </div>
-        <div class="text-center">
-            <p class="content">{{ .Site.Copyright }}</p>
-        </div>
+          <div class="column is-2-widescreen is-3-desktop is-6">
+            <h6 class="mb-4">{{ .Site.Params.Footer.Header2 }}</h6>
+             <ul class="list-unstyled footer-list">
+               {{ partial "menu.html" (dict "menuID" "footer2" "page" .) }}
+             </ul>
+          </div>
+
+          <div class="column is-3-desktop">
+            <h6 class="mb-4">Social Links</h6>
+            <ul class="list-unstyled footer-list">
+               {{ with .Site.Params.Social.twitter -}}
+               <li><a href="https://twitter.com/{{ . }}">Twitter</a></li>
+               {{ end -}}
+               {{ with .Site.Params.Social.facebook }}
+               <li><a href="https://www.facebook.com/{{ . }}">Facebook</a></li>
+               {{ end }}
+               {{ with .Site.Params.Social.instagram -}}
+               <li><a href="https://instagram.com/{{ . }}">Instagram</a></li>
+               {{ end -}}
+               {{ with .Site.Params.Social.linkedin -}}
+               <li><a href="https://www.linkedin.com/in/{{ . }}/">LinkedIn</a></li>
+               {{ end -}}
+               <li><a href="{{ "index.xml" | absURL }}">RSS</a></li>
+            </ul>
+          </div>
+       </div>
+       <div class="scroll-top">
+          <a href="#navigation" id="scrollTop" aria-label="move to top"><i class="ti-angle-up"></i></a>
+       </div>
+       <div class="has-text-centered">
+          <p class="content">&copy; 2020 - Design &amp; Develop By <a href="https://themefisher.com/" target="_blank">Themefisher</a></p>
+       </div>
     </div>
-</footer>
+ </footer>

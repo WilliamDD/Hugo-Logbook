@@ -1,33 +1,24 @@
-<header class="sticky-top bg-white border-bottom border-default">
+<header class="is-sticky-top bg-white border-bottom border-default">
     <div class="container">
-
-        <nav class="navbar navbar-expand-lg navbar-white">
-            <h1 class="navbar-brand mb-0 h4">{{ .Site.Title }}</h1>
-            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation" aria-label="Menu">
-                <i class="ti-menu"></i>
-            </button>
-
-            <div class="collapse navbar-collapse text-center" id="navigation">
-                {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-
-                {{/*  <select class="m-2 border-0" id="select-language">
-                    <option id="en" value="about/" selected>En</option>
-                    <option id="fr" value="fr/about/">Fr</option>
-                </select>  */}}
-
-                <!-- search -->
-                <div class="search px-4">
-                    <button id="searchOpen" class="search-btn" aria-label="Search"><i class="ti-search"></i></button>
-                    <div class="search-wrapper">
-                        <form action="javascript:void(0)" class="h-100">
-                            <input class="search-box pl-4" id="search-query-header" name="s" type="search"
-                                placeholder="Type &amp; Hit Enter...">
-                        </form>
-                        <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
-                    </div>
-                </div>
-
-            </div>
-        </nav>
+ 
+       <nav class="navigation navbar is-white">
+          <a class="navbar-brand is-inline-flex ml-0 is-align-items-center" href="/">
+             <img src="/images/logo.png" alt="logo">
+          </a>
+          <button role="button" aria-label="navigation" class="navbar-burger burger" data-hidden="true" data-target="navigation">
+             <span aria-hidden="true"></span>
+             <span aria-hidden="true"></span>
+             <span aria-hidden="true"></span>
+          </button>
+ 
+          <ul class="navbar-end navbar-menu" id="navigation">
+             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+             {{ partial "search.html" .}}
+ 
+             
+          </ul>
+       </nav>
     </div>
-</header>
+ </header>
+
+ {{/*  {{ partial "menu.html" (dict "menuID" "main" "page" .) }}  */}}

@@ -1,56 +1,51 @@
-<div class="position-sticky" style="top:5rem;">
 <!-- Search -->
-<div class="widget">
+{{/* <div class="widget">
     <h3 class="h5 widget-title"><span>Search</span></h3>
     <form action="/logbook-hugo/search" class="widget-search">
         <input id="search-query-sidebar" name="s" type="search" placeholder="Type &amp; Hit Enter...">
         <button type="submit" aria-label="Search"><i class="ti-search"></i>
         </button>
     </form>
-</div>
+</div> */}}
 <!-- categories -->
 <div class="widget">
-    <h3 class="h5 widget-title"><span>Categories</span></h3>
+    <h5 class="widget-title"><span>{{ .Site.Params.Sidebar.Categories }}</span></h5>
     <ul class="list-unstyled widget-list">
         {{ range $key, $value := .Site.Taxonomies.categories }}
         <li>
-            <a href="/categories/{{ $key }}/" class="d-flex">{{ $key | humanize }}<small
-                    class="ml-auto">({{ $value.Count }})</small></a>
+            <a href="/categories/{{ $key| urlize }}/" class="is-flex">{{ $key | humanize }}<small class="ml-auto tag is-primary">{{$value.Count }}</small></a>
         </li>
         {{ end }}
     </ul>
 </div>
 <!-- tags -->
 <div class="widget">
-    <h3 class="h5 widget-title"><span>Tags</span></h3>
+    <h5 class="widget-title"><span>{{ .Site.Params.Sidebar.Tags }}</span></h3>
     <ul class="list-inline widget-list-inline">
         {{ range $key, $value := .Site.Taxonomies.tags }}
-        <li class="list-inline-item"><a href="/tags/{{ $key }}/">{{ $key }}</a>
+        <li class="list-inline-item"><a href="/tags/{{ $key | urlize }}/">{{ $key }}</a>
         </li>
         {{ end }}
     </ul>
 </div>
 <!-- latest post -->
-<div class="widget">
-    <h3 class="h5 widget-title"><span>Featured Articles</span></h3>
+ <!-- latest post -->
+ <div class="widget">
+    <h5 class="widget-title"><span>{{ .Site.Params.Sidebar.Featured }}</span></h5>
     <!-- post-item -->
-    <ul class="list-unstyled widget-list">
-        {{ range first 3 .Site.Taxonomies.tags.featured }}
+    {{ range first .Site.Params.Sidebar.NrOfFeaturedArticles .Site.Taxonomies.tags.featured }}
         {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
         {{ $dateHuman := .Date | time.Format ":date_long" }}
-        <li class="media widget-post align-items-center">
-            {{ if .Params.Image }}
-            <a href="{{ .RelPermalink }}">
-                <img loading="lazy" class="mr-3" src="{{ .RelPermalink }}{{ .Params.Image }}"
-                    alt="Image of {{ .Title }}">
-            </a>
-            {{ end }}
-            <div class="media-body">
-                <h4 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
-                <small><time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></small>
-            </div>
-        </li>
-        {{ end }}
-    </ul>
-</div>
+        <ul class="list-unstyled widget-list">
+            <li class="media widget-post is-align-items-center">
+               <a href="{{ .RelPermalink }}" name="{{ .Title }}">
+                  <img loading="lazy" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="post thumb">
+               </a>
+               <div class="ml-4">
+                  <h5 class="h6 mb-0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+                  <small><time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></small>
+               </div>
+            </li>
+         </ul>
+    {{ end }}
 </div>

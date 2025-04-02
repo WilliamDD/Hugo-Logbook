@@ -12,25 +12,22 @@ Renders a menu for the given menu ID.
 
 {{- with index site.Menus $menuID }}
 
-<ul class="navbar-nav ml-auto">
-  {{ range . }}
-    {{ if .HasChildren }}
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbar-{{ .Title }}" role="button" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        {{ .Title }}
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbar-{{ .Title }}">
-        {{ range .Children }}
-            <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
-          {{ end }}
-      </div>
-    </li>
-    {{ else }}
-    <li class="nav-item">
-      <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
-    </li>
+{{ range . }}
+{{ if .HasChildren }}
+<li class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link" href="{{ .URL }}">
+    {{ .Name }} <small class="ti-angle-down ml-1"></small>
+  </a>
+  <div class="navbar-dropdown">
+    {{ range .Children }}
+    <a class="navbar-item" href="{{ .URL }}">{{ .Name }}</a>
     {{ end }}
-  {{ end }}
-</ul>
+  </div>
+</li>
+{{ else }}
+<li class="navbar-item">
+  <a class="navbar-link is-arrowless" href="{{ .URL }}">{{ .Name }}</a>
+</li>
+{{ end }}
+{{ end }}
 {{- end }}

@@ -6,10 +6,9 @@
 			<div class="column is-9-desktop">
                 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
                 {{ range $paginator.Pages }}
-                {{ partial "article-list.html" (dict "context" . "isFirstArticle" $isFirstArticle) }}
+                {{ partial "article-home.html" (dict "context" . "isFirstArticle" $isFirstArticle) }}
                 {{ $isFirstArticle = "lazy" }}
                 {{ end }}
-                {{ partial "pagination.html" . }}
             </div>
             <aside class="column is-3-desktop">
                 {{ partial "sidebar.html" . }}

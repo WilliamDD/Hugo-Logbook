@@ -1,0 +1,37 @@
+{{ $dateMachine := .context.Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .context.Date | time.Format ":date_long" }}
+<div class="cell">
+    <article class="columns is-multiline is-justify-content-center mb-6">
+        <div class="column is-12">
+            <div class="post-slider">
+                <img loading="{{ .isFirstArticle }}" src="{{ .context.RelPermalink }}{{ .context.Params.Image }}"
+                    class="" style="height:160px; object-fit: cover;" alt="post-thumb">
+            </div>
+        </div>
+        <div class="column is-12">
+            <h3><a class="post-title" href="{{ .context.RelPermalink }}">{{ .context.Title }}</a></h3>
+            <ul class="list-inline post-meta mb-4">
+                <li class="list-inline-item"><i class="ti-user mr-2"></i><a href="author.html">{{
+                        .Site.Params.Author.Name }}</a>
+                </li>
+                <li class="list-inline-item">Date : <time class="published"
+                        datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></li>
+                <li class="list-inline-item">Categories :
+                    {{ range .context.Params.categories }}
+                    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="ml-1">{{ .
+                        }}</a>
+                    {{ end }}
+                </li>
+                <li class="list-inline-item">Tags :
+                    {{ range .context.Params.tags }}
+                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="ml-1">
+                        {{ . }}
+                    </a>
+                    {{ end }}
+                </li>
+            </ul>
+            <p>{{ .context.Summary | safeHTML }}</p> 
+            <a href="{{ .RelPermalink }}" class="btn btn-outline-primary">Continue Reading</a>
+        </div>
+    </article>
+</div>

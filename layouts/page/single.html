@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .Date | time.Format ":date_long" }}
+<section class="section-sm">
+	<div class="container">
+	   <div class="columns is-multiline">
+		  <div class="column is-12">
+			 <div class="title-bordered mb-6 is-flex is-align-items-center">
+				<h1 class="h4">{{.Title}}</h1>
+			 </div>
+			 <div class="content">
+				{{ .Content | safeHTML }}
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </section>
+{{ end }}

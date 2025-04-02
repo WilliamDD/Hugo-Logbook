@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{ $isFirstArticle := "eager" }}
+<section class="section">
+    <div class="container">
+        <div class="columns is-desktop is-multiline">
+            <div class="column is-12">
+				<div class="title-bordered mb-5 is-flex is-align-items-center">
+					<h1 class="h4">Showing <span class="text-primary">{{ .Title }}</span></h1>
+				</div>
+                <div class="content">
+                    {{ .Content | safeHTML }}
+                 </div>
+			</div>
+            <div class="column is-12">
+                <ul class="list-inline widget-list-inline">
+                    {{ range $key, $value := .Site.Taxonomies.tags }}
+                    <li class="list-inline-item"><a href="/tags/{{ $key }}/">{{ $key }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

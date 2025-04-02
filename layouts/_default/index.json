@@ -1,6 +1,8 @@
-{{- $.Scratch.Add "index" slice -}}
+{{- $.Scratch.Set "search" slice -}}
+
 {{- range .Site.RegularPages -}}
     {{ $date := .PublishDate.Format "January 2, 2006"}}
-    {{- $.Scratch.Add "index" (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink "img" .Params.Image "pubDate" $date "ReadingTime" .ReadingTime) -}}
+    {{- warnf "Adding page: %s" .Permalink -}}
+    {{- $.Scratch.Add "search" (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink "img" .Params.Image "pubDate" $date "ReadingTime" .ReadingTime) -}}
 {{- end -}}
-{{- $.Scratch.Get "index" | jsonify -}}
+{{- $.Scratch.Get "search" | jsonify -}}
